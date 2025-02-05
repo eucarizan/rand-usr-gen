@@ -1,8 +1,6 @@
-function requestListener() {
-  document.getElementsByTagName("body")[0].innerHTML = this.response;
-}
+const apiUrl = new URL("https://randomuser.me/api/");
 
-const request = new XMLHttpRequest();
-request.addEventListener("load", requestListener);
-request.open("GET", "https://randomuser.me/api/");
-request.send();
+fetch(apiUrl)
+  .then(response => response.json())
+  .then(json => document.body.innerText = JSON.stringify(json))
+  .catch(error => console.log(error));
