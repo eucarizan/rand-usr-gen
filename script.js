@@ -1,14 +1,14 @@
 const apiUrl = new URL("https://randomuser.me/api/");
 let userData = [];
 
-function fetchUserData() {
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(json => {
-    const user = json.results[0];
-    userData.push(user);
-  })
-  .catch(error => console.log(error));
+async function fetchUserData() {
+  try {
+    const response = await fetch(apiUrl);
+    const json = await response.json();
+    userData.push(json.results[0]);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function updateUserInfo() {
@@ -30,9 +30,9 @@ function updateUserInfo() {
 function addUser() {
 }
 
-window.onload = () => {
-  fetchUserData();
-  setTimeout(updateUserInfo, 1000);
+window.onload = async () => {
+  await fetchUserData();
+  updateUserInfo();
 }
 
 document.getElementById("get-user-button").addEventListener('onClick', addUser);
