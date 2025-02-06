@@ -1,15 +1,15 @@
 const apiUrl = new URL("https://randomuser.me/api/");
+let userData = [];
 
-const userData = [];
-
+function fetchUserData() {
 fetch(apiUrl)
   .then(response => response.json())
   .then(json => {
     const user = json.results[0];
     userData.push(user);
-    updateUserInfo();
   })
   .catch(error => console.log(error));
+}
 
 function updateUserInfo() {
   if (userData.length === 0) return;
@@ -26,3 +26,13 @@ function updateUserInfo() {
   document.querySelector(".birthday").textContent = `Birthday: ${birthDate}`;
   document.querySelector(".photo").src = user.picture.large;
 }
+
+function addUser() {
+}
+
+window.onload = () => {
+  fetchUserData();
+  setTimeout(updateUserInfo, 1000);
+}
+
+document.getElementById("get-user-button").addEventListener('onClick', addUser);
