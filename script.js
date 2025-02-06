@@ -15,24 +15,27 @@ function updateUserInfo() {
   if (userData.length === 0) return;
 
   const user = userData[0];
-  const birthDate = new Date(user.dob.date).toLocaleDateString("en-US");
 
-  document.querySelector(".name").textContent = `${user.name.first} ${user.name.last}`;
-  document.querySelector(".email").textContent = `Email: ${user.email}`;
-  document.querySelector(".password").textContent = `Password: ${user.login.password}`;
-  document.querySelector(".location").textContent = `Location: ${user.location.city}, ${user.location.country}`;
-  document.querySelector(".gender").textContent = `Gender: ${user.gender}`;
-  document.querySelector(".phone").textContent = `Phone: ${user.phone}`;
-  document.querySelector(".birthday").textContent = `Birthday: ${birthDate}`;
-  document.querySelector(".photo").src = user.picture.large;
+  let tempDiv = createUserDiv(user);
+  document.body.append(tempDiv);
 }
 
 async function addUser() {
   await fetchUserData();
   const user = userData[userData.length - 1];
-  const birthDate = new Date(user.dob.date).toLocaleDateString("en-US");
 
-  let content = `
+  let tempDiv = createUserDiv(user);
+
+  let divs = document.getElementsByTagName('div');
+  divs[divs.length - 1].insertAdjacentElement("afterend", tempDiv);
+}
+
+function createUserDiv(user) {
+  const birthDate = new Date(user.dob.date).toLocaleDateString("en-US");
+  let tempDiv = document.createElement("div");
+  tempDiv.classList.add('user');
+
+  tempDiv.innerHTML = `
     <h2 class="name">${user.name.first} ${user.name.last}</h2>
     <p class="email">Email: ${user.email}</p>
     <p class="password">Password: ${user.login.password}</p>
@@ -42,12 +45,8 @@ async function addUser() {
     <p class="birthday">Birthday: ${birthDate}</p>
     <img class="photo" src="${user.picture.large}" alt="user photo"/>
   `;
-  let tempDiv = document.createElement("div");
-  tempDiv.innerHTML = content;
-  tempDiv.classList.add('user');
 
-  let divs = document.getElementsByTagName('div');
-  divs[divs.length - 1].insertAdjacentElement("afterend", tempDiv);
+  return tempDiv;
 }
 
 window.onload = async () => {
