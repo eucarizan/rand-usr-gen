@@ -7,6 +7,7 @@
     - [1: random user](#1-random-user)
     - [2: clean up the data](#2-clean-up-the-data)
     - [3: get more users](#3-get-more-users)
+    - [4: save users](#4-save-users)
 
 ## learning
 create a web page that can fetch random user data from api for testing purposes and display it on a web page. also, work with promises and handle different data structures.
@@ -117,6 +118,39 @@ your page should:
 #### 3.3 examples
 
 ![stage 03 demo](./s03.gif)
+
+</details>
+
+### 4: save users
+<details>
+<summary>save the fetched users to local or session storage</summary>
+
+#### 4.1 description
+it’s good that we can get more random users; now, we should find a way to save them.
+
+in this stage, we will save the data in one of the browser storage types, either session or local. the important thing is that the data should be persistent after a page reload. after saving the users and reloading the page, we should see the saved users.
+
+first, add a `button` element in the `body` with the text `save users` and the id of `save-users-button`.
+
+after clicking this button, save all the fetched users in the storage and show them under the third-level `header` tag with the text `saved users`. the saved users should have the class `saved` added to their container `div` tag.
+
+also, after reloading the page, we should see the saved users similarly.
+
+when saving the users, you should first remove the previously saved users and replace them with the current fetched users.
+
+#### 4.2 objectives
+your page should:
+1. contain a new button with the id of `save-users-button` and the text `save users`;
+2. use the [api](https://randomuser.me/api/);
+3. display the data from the api in the body after the page loads;
+4. have the necessary fields shown in the mentioned html tags;
+5. save and show the fetched users after clicking the button;
+6. show a level 3 header with the text `saved users`;
+7. show the saved users after the page reloads.
+
+#### 4.3 examples
+
+![stage 4 demo](./s04.gif)
 
 </details>
 
