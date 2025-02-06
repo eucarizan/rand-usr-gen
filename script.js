@@ -27,7 +27,27 @@ function updateUserInfo() {
   document.querySelector(".photo").src = user.picture.large;
 }
 
-function addUser() {
+async function addUser() {
+  await fetchUserData();
+  const user = userData[userData.length - 1];
+  const birthDate = new Date(user.dob.date).toLocaleDateString("en-US");
+
+  let content = `
+    <h2 class="name">${user.name.first} ${user.name.last}</h2>
+    <p class="email">Email: ${user.email}</p>
+    <p class="password">Password: ${user.login.password}</p>
+    <p class="location">Location: ${user.location.city}, ${user.location.country}</p>
+    <p class="gender">Gender: ${user.gender}</p>
+    <p class="phone">Phone: ${user.phone}</p>
+    <p class="birthday">Birthday: ${birthDate}</p>
+    <img class="photo" src="${user.picture.large}" alt="user photo"/>
+  `;
+  let tempDiv = document.createElement("div");
+  tempDiv.innerHTML = content;
+  tempDiv.classList.add('user');
+
+  let divs = document.getElementsByTagName('div');
+  divs[divs.length - 1].insertAdjacentElement("afterend", tempDiv);
 }
 
 window.onload = async () => {
@@ -35,4 +55,4 @@ window.onload = async () => {
   updateUserInfo();
 }
 
-document.getElementById("get-user-button").addEventListener('onClick', addUser);
+document.getElementById("get-user-button").addEventListener('click', addUser);
