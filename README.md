@@ -6,6 +6,7 @@
   - [stages](#stages)
     - [1: random user](#1-random-user)
     - [2: clean up the data](#2-clean-up-the-data)
+    - [3: get more users](#3-get-more-users)
 
 ## learning
 create a web page that can fetch random user data from api for testing purposes and display it on a web page. also, work with promises and handle different data structures.
@@ -89,6 +90,36 @@ your page should:
 
 </details>
 
+### 3: get more users
+<details>
+<summary>fetch more users when requested and display it as a list on the page.</summary>
+
+#### 3.1 description
+having adjusted the data, we can get more users!
+
+in this stage, each click of the button should add a new user to the page, in addition to the first user received upon loading.
+
+first, put a `button` element in the `body` with the text `get user` and the id of `get-user-button`.
+
+after clicking this button we should see the new user in the same way in the previous stage.
+
+this stage should be very simple if you notice that you only need to add a new event related to the button after the load event because the functionality is the same as in the previous stage.
+
+#### 3.2 objectives
+your page should:
+
+1. contain a button with the id of `get-user-button` and `get user` text;
+2. user the [api](http://randomuser.me/api/)
+3. display the data from the api in the body after the page loads;
+4. enable the necessary fields shown in mentiond html tags;
+5. display a new user after clicking the button.
+
+#### 3.3 examples
+
+![stage 03 demo](./s03.gif)
+
+</details>
+
 [<<](https://github.com/eucarizan/front-end/blob/main/README.md)
 <!--
 :%s/\(Sample \(Input\|Output\) \d:\)\n\(.*\)/```\r\r**\1**\r```\3/gc
@@ -103,6 +134,7 @@ your page should:
 
 #### 0.3 examples
 
+![](./s00.png)
+
 </details>
 -->
-
