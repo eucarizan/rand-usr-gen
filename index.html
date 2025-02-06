@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Random User Generator</title>
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
   </head>
   <body>
     <h1>Random User Generator</h1>
-    <div class="user">
+    <div class="loader"></div>
+    <div class="user hidden">
       <h2 class="name">Loading...</h2>
       <p class="email">Loading...</p>
       <p class="password">Loading...</p>
@@ -15,7 +17,7 @@
       <p class="gender">Loading...</p>
       <p class="phone">Loading...</p>
       <p class="birthday">Loading...</p>
-      <img class="photo" alt="user photo" src="placeholder.png" width="128" height="128"/>
+      <img class="photo" alt="user photo"/>
     </div>
   </body>
 </html>

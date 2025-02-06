@@ -2,12 +2,17 @@ const apiUrl = new URL("https://randomuser.me/api/");
 
 const userData = [];
 
+document.querySelector(".user").classList.add("hidden");
+document.querySelector(".loader").classList.remove("hidden");
+
 fetch(apiUrl)
   .then(response => response.json())
   .then(json => {
     const user = json.results[0];
     userData.push(user);
     updateUserInfo();
+    document.querySelector(".loader").classList.add("hidden");
+    document.querySelector(".user").classList.remove("hidden");
   })
   .catch(error => console.log(error));
 
