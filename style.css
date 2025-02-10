@@ -6,7 +6,6 @@ body {
   align-items: flex-start;
   height: 100vh;
   margin: 0;
-  padding-top: 20px;
 }
 
 .user-list-container {
@@ -17,6 +16,7 @@ body {
   width: 80vw;
   max-width: 1200px;
   position: relative;
+  margin-top: 20px;
 }
 
 .header {

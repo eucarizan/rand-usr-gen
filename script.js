@@ -61,15 +61,16 @@ function saveUsers() {
 
 function showSavedUsers() {
   const users = JSON.parse(window.localStorage.getItem('savedusers'));
-  if (users == null) return;
+  if (!users || users.length == 0) return;
 
-  // let divs = document.getElementsByTagName('div');
-  let divs = document.querySelector('.user-list');
+  let existingSavedUsers = document.querySelector('.saved-users');
+  if (existingSavedUsers) {
+    existingSavedUsers.remove();
+  }
 
   let tempDiv = document.createElement("div");
-  tempDiv.innerHTML = `
-    <h3>Saved Users</h3>
-  `;
+  tempDiv.classList.add('saved-users');
+  tempDiv.innerHTML = `<h3>Saved Users</h3>`;
 
   for (let i = 0; i < users.length; i++) {
     let userDiv = createUserDiv(users[i]);
@@ -77,6 +78,8 @@ function showSavedUsers() {
     tempDiv.appendChild(userDiv);
   }
 
+  // let divs = document.getElementsByTagName('div');
+  let divs = document.querySelector('.user-list');
   if (divs.length == 0) {
     document.body.appendChild(tempDiv);
   } else {
