@@ -48,6 +48,23 @@ body {
   background-color: #0056b3;
 }
 
+#delete-storage-button {
+  padding: 8px;
+  border: none;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+#delete-storage-button:hover {
+  background-color: #b02a37;
+}
 .user-list {
   display: flex;
   flex-direction: column;

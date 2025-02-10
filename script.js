@@ -73,7 +73,7 @@ function showSavedUsers() {
   tempDiv.innerHTML = `<h3>Saved Users</h3>`;
 
   users.forEach(user => {
-    let userDiv = createUserDiv(users[i]);
+    let userDiv = createUserDiv(user);
     userDiv.classList.add('saved');
     tempDiv.appendChild(userDiv);
   });
@@ -87,6 +87,11 @@ function showSavedUsers() {
   }
 }
 
+function clearStorage() {
+  window.localStorage.clear();
+  document.querySelector('.saved-users').innerHTML = "";
+}
+
 window.onload = async () => {
   await fetchUserData();
   showSavedUsers();
@@ -95,3 +100,4 @@ window.onload = async () => {
 
 document.getElementById("get-user-button").addEventListener('click', addUser);
 document.getElementById("save-users-button").addEventListener('click', saveUsers);
+document.getElementById("delete-storage-button").addEventListener('click', clearStorage);
