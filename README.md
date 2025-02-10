@@ -1,5 +1,7 @@
 # random user generator
 
+![random user generator demo](./rugen-demo.gif)
+
 - [random user generator](#random-user-generator)
   - [learning](#learning)
   - [about](#about)
