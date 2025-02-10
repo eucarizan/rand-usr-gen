@@ -51,6 +51,30 @@ function createUserDiv(user) {
 
 function saveUsers() {
   window.localStorage.setItem('savedusers', JSON.stringify(userData));
+  showSavedUsers();
+}
+
+function showSavedUsers() {
+  let divs = document.getElementsByTagName('div');
+
+  let tempDiv = document.createElement("div");
+  tempDiv.innerHTML = `
+    <h3>Saved Users</h3>
+  `;
+
+  const users = JSON.parse(window.localStorage.getItem('savedusers'));
+
+  for (let i = 0; i < users.length; i++) {
+    let userDiv = createUserDiv(users[i]);
+    userDiv.classList.add('saved');
+    tempDiv.appendChild(userDiv);
+  }
+
+  if (divs.length == 0) {
+    document.body.appendChild(tempDiv);
+  } else {
+    divs[divs.length - 1].insertAdjacentElement("afterend", tempDiv);
+  }
 }
 
 window.onload = async () => {
