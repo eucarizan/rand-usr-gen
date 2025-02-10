@@ -49,9 +49,23 @@ function createUserDiv(user) {
   return tempDiv;
 }
 
+function saveUsers() {
+  window.localStorage.setItem('savedusers', JSON.stringify(userData));
+}
+
 window.onload = async () => {
   await fetchUserData();
   updateUserInfo();
 }
 
 document.getElementById("get-user-button").addEventListener('click', addUser);
+document.getElementById("save-users-button").addEventListener('click', saveUsers);
+
+/*
+ * todo 01 - save users
+ *  - add a level 3 header after divs
+ *  - put saved users from local storage
+ *  - add class 'saved' to the div container
+ * todo 02 - handle reload
+ *  - new fetch user must be after the saved
+ */
