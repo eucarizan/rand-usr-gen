@@ -72,11 +72,11 @@ function showSavedUsers() {
   tempDiv.classList.add('saved-users');
   tempDiv.innerHTML = `<h3>Saved Users</h3>`;
 
-  for (let i = 0; i < users.length; i++) {
+  users.forEach(user => {
     let userDiv = createUserDiv(users[i]);
     userDiv.classList.add('saved');
     tempDiv.appendChild(userDiv);
-  }
+  });
 
   // let divs = document.getElementsByTagName('div');
   let divs = document.querySelector('.user-list');
