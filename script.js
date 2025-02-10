@@ -55,16 +55,15 @@ function saveUsers() {
 }
 
 function showSavedUsers() {
+  const users = JSON.parse(window.localStorage.getItem('savedusers'));
+  if (users == null) return;
+
   let divs = document.getElementsByTagName('div');
 
   let tempDiv = document.createElement("div");
   tempDiv.innerHTML = `
     <h3>Saved Users</h3>
   `;
-
-  const users = JSON.parse(window.localStorage.getItem('savedusers'));
-
-  if (users == null) return;
 
   for (let i = 0; i < users.length; i++) {
     let userDiv = createUserDiv(users[i]);
