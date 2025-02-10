@@ -64,6 +64,8 @@ function showSavedUsers() {
 
   const users = JSON.parse(window.localStorage.getItem('savedusers'));
 
+  if (users == null) return;
+
   for (let i = 0; i < users.length; i++) {
     let userDiv = createUserDiv(users[i]);
     userDiv.classList.add('saved');
@@ -79,17 +81,9 @@ function showSavedUsers() {
 
 window.onload = async () => {
   await fetchUserData();
+  showSavedUsers();
   updateUserInfo();
 }
 
 document.getElementById("get-user-button").addEventListener('click', addUser);
 document.getElementById("save-users-button").addEventListener('click', saveUsers);
-
-/*
- * todo 01 - save users
- *  - add a level 3 header after divs
- *  - put saved users from local storage
- *  - add class 'saved' to the div container
- * todo 02 - handle reload
- *  - new fetch user must be after the saved
- */
